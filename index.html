@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>عامان من الحب - فيصل وشاهيناز</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #000428 100%);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Animated Background Particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 102, 204, 0.6);
+      border-radius: 50%;
+      animation: float 20s infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+    }
+
+    /* Container */
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-bottom: 60px;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ff66cc, #00bfff, #ff66cc);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+      text-shadow: 0 0 30px rgba(255, 102, 204, 0.5);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+    }
+
+    /* Circular Countdown */
+    .countdown-section {
+      margin: 60px auto;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .countdown-circles {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .circle-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+    }
+
+    .circle-bg {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 102, 204, 0.3);
+      box-shadow: 0 8px 32px rgba(255, 102, 204, 0.2),
+                  inset 0 0 20px rgba(255, 102, 204, 0.1);
+    }
+
+    .circle-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .circle-progress {
+      fill: none;
+      stroke: url(#gradient);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 408;
+      stroke-dashoffset: 408;
+      transition: stroke-dashoffset 1s ease;
+      filter: drop-shadow(0 0 10px rgba(255, 102, 204, 0.8));
+    }
+
+    .circle-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .circle-number {
+      font-size: 2.5em;
+      font-weight: 700;
+      color: #ff66cc;
+      display: block;
+      text-shadow: 0 0 20px rgba(255, 102, 204, 0.8);
+    }
+
+    .circle-label {
+      font-size: 0.9em;
+      color: #00bfff;
+      display: block;
+      margin-top: 5px;
+    }
+
+    /* Glass Card Message */
+    .message-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 50px 40px;
+      margin: 60px auto;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1.5s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 102, 204, 0.1) 0%, transparent 70%);
+      animation: rotate 10s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-content {
+      position: relative;
+      z-index: 1;
+      font-size: 1.4em;
+      line-height: 2;
+      color: #f0f0f0;
+    }
+
+    /* Animated Button */
+    .love-btn {
+      background: linear-gradient(135deg, #ff66cc, #ff3399);
+      color: #fff;
+      font-size: 1.5em;
+      font-weight: 600;
+      padding: 20px 50px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 40px auto;
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(255, 102, 204, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .love-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .love-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .love-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(255, 102, 204, 0.6);
+    }
+
+    .love-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hidden Message with Animation */
+    .hidden-message {
+      display: none;
+      background: linear-gradient(135deg, rgba(255, 102, 204, 0.2), rgba(0, 191, 255, 0.2));
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 40px;
+      margin: 40px auto;
+      max-width: 700px;
+      font-size: 1.5em;
+      line-height: 2;
+      border: 2px solid rgba(255, 102, 204, 0.5);
+      animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      box-shadow: 0 0 50px rgba(255, 102, 204, 0.4);
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Map Section */
+    .map-section {
+      margin: 80px auto;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      max-width: 900px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .map-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #00bfff;
+    }
+
+    .map-section p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 700px;
+      height: 350px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Hearts Animation */
+    .heart {
+      position: fixed;
+      font-size: 2em;
+      animation: floatHeart 6s ease-in infinite;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Modal Popup */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, rgba(26, 0, 51, 0.95), rgba(0, 4, 40, 0.95));
+      padding: 50px;
+      border-radius: 30px;
+      text-align: center;
+      max-width: 600px;
+      border: 2px solid rgba(255, 102, 204, 0.5);
+      box-shadow: 0 0 100px rgba(255, 102, 204, 0.5);
+      animation: modalSlideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes modalSlideIn {
+      from {
+        transform: scale(0.7) translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-content h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      color: #ff66cc;
+    }
+
+    .modal-content p {
+      font-size: 1.3em;
+      line-height: 2;
+      margin-bottom: 30px;
+    }
+
+    .close-modal {
+      background: linear-gradient(135deg, #00bfff, #0080ff);
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(0, 191, 255, 0.5);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5em; }
+      .circle-container { width: 110px; height: 110px; }
+      .circle-number { font-size: 2em; }
+      .message-content { font-size: 1.2em; }
+      .love-btn { font-size: 1.2em; padding: 15px 35px; }
+      .modal-content { padding: 30px; max-width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>✨ عامان من الحب ✨</h1>
+      <p style="font-size: 1.3em; color: #00bfff; margin-top: 10px;">فيصل ❤️ شاهيناز</p>
+    </div>
+
+    <!-- Circular Countdown -->
+    <div class="countdown-section">
+      <h2 style="font-size: 2em; margin-bottom: 40px; color: #ff66cc;">⏰ العد التنازلي للذكرى الثانية</h2>
+      <div class="countdown-circles">
+        <div class="circle-container">
+          <div class="circle-bg"></div>
+          <svg class="circle-svg">
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ff66cc;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#00bfff;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <circle class="circle-progress" id="days-circle" cx="70" cy="70" r="65"></circle>
+          </svg>
+          <div class="circle-content">
+            <span class="circle-number" id="days">0</span>
+            <span class="circle-label">يوم</span>
+          </div>
+        </div>
+
+        <div class="circle-container">
+          <div class="circle-bg"></div>
+          <svg class="circle-svg">
+            <circle class="circle-progress" id="hours-circle" cx="70" cy="70" r="65"></circle>
+          </svg>
+          <div class="circle-content">
+            <span class="circle-number" id="hours">0</span>
+            <span class="circle-label">ساعة</span>
+          </div>
+        </div>
+
+        <div class="circle-container">
+          <div class="circle-bg"></div>
+          <svg class="circle-svg">
+            <circle class="circle-progress" id="minutes-circle" cx="70" cy="70" r="65"></circle>
+          </svg>
+          <div class="circle-content">
+            <span class="circle-number" id="minutes">0</span>
+            <span class="circle-label">دقيقة</span>
+          </div>
+        </div>
+
+        <div class="circle-container">
+          <div class="circle-bg"></div>
+          <svg class="circle-svg">
+            <circle class="circle-progress" id="seconds-circle" cx="70" cy="70" r="65"></circle>
+          </svg>
+          <div class="circle-content">
+            <span class="circle-number" id="seconds">0</span>
+            <span class="circle-label">ثانية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message Card -->
+    <div class="message-card">
+      <div class="message-content">
+        منذ ذلك اليوم في سبعين، وقلبي لم يعد يعرف الطريق إلا إليكِ.<br/>
+        عامان مضيا، وما زلتِ كما أحببتكِ أول مرة: الحلم، الأمان، والحياة.<br/>
+        كل يوم معكِ هو ذكرى جديدة، وكل لحظة بجانبكِ هي قصة حب لا تنتهي.<br/>
+        شكراً لأنكِ اخترتِني، شكراً لأنكِ حلمي الذي تحقق.<br/>
+        <!-- Full Letter Section -->
+    <div class="letter-section">
+        <h2 style="font-size: 2.5em; margin-bottom: 40px; color: #ff66cc;">💌 رسالة من القلب</h2>
+        
+        <div class="letter-card">
+          <div class="letter-content">
+            <h3>يا شاهيناز…</h3>
+            <p>اليوم ماشي نهار عادي… اليوم هو الذكرى لي رجّعتني لعامين لور، لعام 07 ديسمبر 2023… النهار لي بدات حكايتنا 🕊️❤️</p>
+            
+            <div class="section-divider"></div>
+            
+            <p>من ذاك النهار… الدنيا تبدّلت، النَفَس تبدّل، وحتى نظرتي للحياة تبدّلت… كي دخلتي انتي لحياتي 💫</p>
+            
+            <p>من أول كلمة… أول ابتسامة… أول لحظة حسّيت فيها بلي قلبي يهدأ غير كي تكوني معايا… عرفت بلي هذا ماشي تعارف عادي، هذا بداية قصة 📝💖</p>
+            
+            <div class="section-highlight">
+              <h4>🌙✨ عامين من لحظات ما تتنساش…</h4>
+            </div>
+            
+            <p>عامين مرّو كي الومضة… بسرعة، بصح كل ثانية معمّرة بالمعنى. كي نرجع نشوف لور… نلقا نفسي نتذكّر كل تفصيل صغير… نتذكّر كي كنتي تقولي كلمة بسيطة وتبدّل نهاري كامل 😊💞</p>
+            
+            <p>نتذكّر ضحكتك… ضحكة قادرة تشعل قلبي كيف النار الدافية 🔥💗. ضحكة تشبه الموسيقى، وتشبه الراحة، وتشبه كَفّ يتحط على صدري ويقولّلي: "راك بخير… أنا هنا." 🤍</p>
+            
+            <p>نتذكّر دعمك… نتذكّر كل مرة وقفتيني فيها، وكنتِ سند كي نطيح، وكتفي كي نتعب، وصوتي كي نسكت. وشكون يلقى هاذ الشي؟ قليل… قليل بزاف 🩶🌿</p>
+            
+            <div class="section-highlight">
+              <h4>☁️💭 نتذكّر كل حاجة دارت بيناتنا…</h4>
+            </div>
+            
+            <p>نتذكّر المشاوير الصغيرة في الحومة… نتذكّر الخطوات لي كنا نمشيوها بلا ما نحسّو بالوقت، نتذكّر اللحظات لي غير نقعدو ونسكتو… وبالرغم من الصمت… كنا نفهمو بعض أكثر من ألف كلمة 🕊️💞</p>
+            
+            <p>نتذكّر النقاشات تاع الليل… نتذكّر كي نغضبو شوية… وبعد نرجعو نضحكو على أرواحنا كيفاه زعلنا على حاجة تافهة 😅💘. العلاقة الصحيحة مش هي لي ما تتخاصمش، العلاقة الصحيحة هي لي ترجع أقوى بعد كل حاجة ❤️‍🔥</p>
+            
+            <p>نتذكّر حتى أصعب الأيام… الأيام لما كنا نمرّو بضغط، أو تعب، أو خوف من المستقبل… لكن دايم نرجعو لبعض. دايم نلقاو الطريق، كأنو مكتوب لنا نكمّلو القصة مع بعض 🌟🤍</p>
+            
+            <div class="section-highlight">
+              <h4>🌸💗 عامين… بصح قيمتهم أكبر من الوقت</h4>
+            </div>
+            
+            <p>عامين معاك يشبهو أحلى هدية بعتها لي الدنيا 🎁💞. عامين علّموني: باللي الحب مش في الكلام، الحب في الأفعال، وفي الاهتمام، وفي الصبر، وفي دعوة من القلب، وفي نظرة تقول كلش بلا ما تتقال 👀❤️</p>
+            
+            <p>عامين وأنا نتعلّم كل يوم حاجة جديدة عليك، على عقلك، على قلبك، على طيبتك، على شخصيتك لي كل مرة تدهشني أكثر 🌿💫</p>
+            
+            <p>عامين حسّيت فيهم بلي انتي مش غير جزء من حياتي… انتي القلب تاعي. انتي الروح لي تعمّر الفراغ. وانتي القدر الجميل لي جا بلا موعد 🤍</p>
+            
+            <div class="section-highlight">
+              <h4>✨🔥 حتى اليوم… 07 ديسمبر 2025</h4>
+            </div>
+            
+            <p>اليوم نحتفلوا… مش غير بذكرى، ولا بعدد الأيام، نحتفلوا بـ رحلة كاملة. نحتفلوا بشيء ما قدرش الوقت يكسرو، ولا المشاكل تغيّرو، ولا المسافة تنقص منو 💞</p>
+            
+            <p class="emphasis-text">اليوم نقولّك: شكراً… شكراً على كل لحظة ضحكنا فيها، شكراً على كل كلمة حب، شكراً على كل دعم، شكراً لأنك بقاتي واقفة معايا، وشكراً لأنك اخترتيني كل مرة، حتى كي كان ساهل تروحي… اخترتِ تبقي ❤️‍🔥🌙</p>
+            
+            <div class="section-highlight">
+              <h4>💌✨ منّي ليك… كلمة من القلب</h4>
+            </div>
+            
+            <p>يا شاهيناز، لو كان نكتب واش نحسّ، نحتاج كتاب كامل، ومجلدات، وأشعار، ومع ذلك ما يكفيش 😔💗</p>
+            
+            <p class="emphasis-text">لأنّك: الراحة تاعي، الأمان، السر، والحلُو لي زيّن عامين كاملين من عمري. والقادم… أحلى بإذن الله 🤲💖</p>
+            
+            <p>نتمناو نحتفلو عام… ورا عام… حتى نولّو نقولو: "بدات حكايتنا 07 ديسمبر 2023… ومن بعد ولاّت عمر كامل." 🕊️❤️🌹</p>
+            
+            <div class="section-divider"></div>
+            
+            <div class="final-message">
+              <h4>🌟✨ خاتمة الرسالة</h4>
+              <p>يا شاهيناز… هاذ الرسالة طويلة، بصح ما تكفيش باش تبين واش مكانتك عندي. ما تكفيش باش توصف عامين من الحب، عامين من الأمل، عامين من اللحظات لي بقات محفورة في قلبي 💖🔥</p>
+              
+              <p class="closing-text">اليوم… نهنيك ونهني روحي معاك، ونقولّك: <strong>عيد عامين سعيد علينا ❤️✨</strong><br/>وربي يكتب لقلوبنا الطريق لي يهدي للخير ديما 🤲🌙</p>
+              
+              <p class="signature">— فيصل 💌💗</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <strong style="color: #ff66cc;">إلى الأبد، وما بعد الأبد، أحبك يا شاهيناز.</strong>
+      </div>
+    </div>
+
+    <!-- Love Button -->
+    <button class="love-btn" onclick="showLove()">
+      <span>❤️ اضغط هنا لرسالة خاصة</span>
+    </button>
+
+    <!-- Hidden Message -->
+    <div class="hidden-message" id="hiddenMessage">
+      💖 أحبك يا شاهيناز، أكثر مما تتخيلين، أكثر مما أستطيع أن أقول، وأكثر مما يحتمل قلبي. أنتِ نبضي، وأنتِ قصتي، وأنتِ كل شيء. 💖
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+      <h2>📍 مكان اللقاء الأول</h2>
+      <p>ثانوية الشهيد بوزبرة أحمد، ثم جامعة تيارت – سيميدال</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25562.273414202!2d1.2500000000000002!3d35.3666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDIyJzAwLjAiTiAxwrAxNScwMC4wIkU!5e0!3m2!1sen!2sdz!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div class="modal" id="welcomeModal">
+    <div class="modal-content">
+      <h2>💝 مرحباً بك 💝</h2>
+      <p>هذا الموقع مخصص للاحتفال بعامين من الحب والذكريات الجميلة.<br/>أتمنى أن يعجبك يا شاهيناز ❤️</p>
+      <button class="close-modal" onclick="closeModal()">دخول ✨</button>
+    </div>
+  </div>
+
+  <script>
+    // Show Modal on Load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('welcomeModal').style.display = 'flex';
+      }, 500);
+    });
+
+    function closeModal() {
+      document.getElementById('welcomeModal').style.display = 'none';
+      createHearts();
+    }
+
+    // Countdown Timer with Circular Progress
+    function updateCountdown() {
+      const start = new Date("2023-12-07");
+      const end = new Date("2025-12-07");
+      const now = new Date();
+
+      const total = end - start;
+      const elapsed = now - start;
+      const remaining = total - elapsed;
+
+      if (remaining > 0) {
+        const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+
+        // Update circular progress
+        updateCircle('days-circle', days, 365);
+        updateCircle('hours-circle', hours, 24);
+        updateCircle('minutes-circle', minutes, 60);
+        updateCircle('seconds-circle', seconds, 60);
+      } else {
+        document.querySelector('.countdown-section h2').innerHTML = "🎉 اليوم هو الذكرى الثانية لحبنا! 🎉";
+        document.querySelectorAll('.circle-number').forEach(el => el.textContent = "0");
+      }
+    }
+
+    function updateCircle(id, value, max) {
+      const circle = document.getElementById(id);
+      const circumference = 2 * Math.PI * 65;
+      const progress = (value / max) * circumference;
+      circle.style.strokeDashoffset = circumference - progress;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Show Hidden Message
+    function showLove() {
+      const msg = document.getElementById("hiddenMessage");
+      msg.style.display = "block";
+      setTimeout(() => {
+        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+      createHearts();
+    }
+
+    // Create Floating Hearts
+    function createHearts() {
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.textContent = '❤️';
+          heart.style.left = Math.random() * 100 + '%';
+          heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 6000);
+        }, i * 200);
+      }
+    }
+
+    // Create Particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    createParticles();
+  </script>
+
+</body>
+</html>
